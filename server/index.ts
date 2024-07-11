@@ -14,5 +14,7 @@ app.listen( port, () => {
 
 app.get('/', (_req, res) => {
     const myDate = Date.now();
-    res.json({date: myDate});
+    const localeTime = new Date(myDate).toLocaleTimeString();
+    
+    res.json({unix: myDate, localeTime: localeTime});
 });
