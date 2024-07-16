@@ -12,9 +12,6 @@ app.listen( port, () => {
     console.log(`express is listening at http://localhost:${port}`);
 });
 
-app.get('/', (_req, res) => {
-    const myDate = Date.now();
-    const localeTime = new Date(myDate).toLocaleTimeString();
-    
-    res.json({unix: myDate, localeTime: localeTime});
+app.get('/api/whoami', (_req, res) => {
+    res.json({ipaddress: _req.ip, language: _req.headers['accept-language'], software: _req.headers['user-agent']});
 });
